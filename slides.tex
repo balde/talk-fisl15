@@ -1,0 +1,133 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc} % codificacao de caracteres
+\usepackage[T1]{fontenc}    % codificacao de fontes
+\usepackage[brazil]{babel}  % idioma
+\usepackage{listings}
+\usetheme{Antibes}         % tema
+
+\begin{document}
+\title{balde: Desenvolvendo aplicações web em C}   
+\author{Rafael G. Martins} 
+\date{\today} 
+
+\frame{\titlepage} 
+
+%\frame{\frametitle{Tópicos}\tableofcontents} 
+
+
+\section{Quem sou?!}
+\frame{
+    \frametitle{Quem sou?!}
+    \begin{itemize}
+        \item Engenheiro de controle e automação
+        \item Desenvolvedor do Gentoo Linux
+        \item Desenvolvedor Python no Titans Group
+    \end{itemize}
+}
+
+
+\section{balde?!}
+\frame{
+    \frametitle{balde?!}
+    \begin{itemize}
+        \item O que quer dizer esse nome?!
+            \pause
+        \item Alguém ainda programa em C?!
+            \pause
+        \item Isso não deveria estar sendo feito em Python/PHP/Ruby/(insira sua linguagem hipster preferida aqui)?!
+    \end{itemize}
+}
+
+\section{Como instalar?}
+\frame{\frametitle{Como instalar?}
+    \begin{itemize}
+        \item \url{http://balde.io/}
+            \pause
+        \item \url{https://github.com/balde}
+            \pause
+        \item Poucas dependências: FastCGI toolkit, shared-mime-info, PEG.
+            \pause
+        \item Funciona com qualquer servidor WEB que suporte CGI/FastCGI.
+            \pause
+        \item
+            \$ ./autogen.sh \&\& ./configure \&\& make \&\& sudo make install
+    \end{itemize}
+}
+
+\section{Hello World}
+\frame{\frametitle{Hello world}
+    Live coding!
+}
+
+\section{Views}
+\frame{\frametitle{Views}
+    \begin{itemize}
+        \item Views são chamadas pelo framework para responder a uma requisição.
+            \pause
+        \item Uma view recebe um contexto de aplicação e um contexto de requisição, e retorna um contexto de resposta.
+            \pause
+        \item A definição das rotas e métodos HTTP atendidos pela view é feita no momento do registro da view.
+    \end{itemize}
+}
+
+\section{Contexto de aplicação}
+\frame{\frametitle{Contexto de aplicação}
+    \begin{itemize}
+        \item Armazena toda a informação necessária durante todo o ciclo de vida da aplicação.
+            \pause
+        \item Registra todas as views e realiza o roteamento das URLs e métodos HTTP.
+            \pause
+        \item Pode armazenar dados arbitrários da aplicação, para serem facilmente acessados pelas views, se necessário.
+    \end{itemize}
+}
+
+\section{Contexto de requisição}
+\frame{\frametitle{Contexto de requisicao}
+    \begin{itemize}
+        \item Armazena toda a informação proveniente de uma requisição HTTP feita por um cliente.
+            \pause
+        \item Existem funções especiais para manipular os dados armazenados neste contexto.
+    \end{itemize}
+}
+
+\section{Contexto de resposta}
+\frame{\frametitle{Contexto de resposta}
+    \begin{itemize}
+        \item Deve ser construido na view para armazenar toda a informação necessária para construir a resposta da requisição HTTP.
+            \pause
+        \item Existem funções especiais para inserir os dados neste contexto.
+    \end{itemize}
+}
+
+\section{Recursos estáticos}
+\frame{\frametitle{Recursos estáticos}
+    \begin{itemize}
+        \item Recursos estáticos da aplicação, como arquivos CSS, imagens e scripts JavaScript, podem ser convertidos para codigo C e linkados com o binário final da aplicação.
+            \pause
+        \item Utiliza os objetos GResource da GLib e o utilitário glib-resources-compile.
+            \pause
+        \item Todos os recursos estáticos presentes na aplicação são registrados automaticamente num endpoint especifico (/static/).
+    \end{itemize}
+}
+
+\section{Templates}
+\frame{\frametitle{Templates}
+    \begin{itemize}
+        \item Engine de templates "logic-less".
+            \pause
+        \item É capaz de manipular variáveis, strings, inteiros, reais e chamadas simples de funções.
+            \pause
+        \item Todos os templates são convertidos em código C, que devem ser compilados e linkados com o binário final da aplicação.
+    \end{itemize}
+}
+
+\section{Perguntas?!}
+\frame{\frametitle{Perguntas?!}
+    \begin{itemize}
+        \item Email: \url{rafael@rafaelmartins.eng.br}
+        \item Blog: \url{http://rafaelmartins.eng.br}
+        \item IRC: rafaelmartins @ Freenode
+    \end{itemize}
+}
+
+\end{document}
